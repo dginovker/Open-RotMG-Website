@@ -20,7 +20,7 @@ export function validateFeed(feed) {
   }
   return feed;
 }
-export async function loadFeed(fetchImpl = fetch) {
+export async function loadFeed(fetchImpl = globalThis.OpenRotMGBackend.fetch) {
   const response = await fetchImpl('/api/updates', {cache: 'no-store', credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000)});
   if (!response.ok) throw new Error(`Updates request failed (${response.status})`);
   return validateFeed(await response.json());

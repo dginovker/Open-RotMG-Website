@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+  <meta name="openrotmg-api" content="{{API_ORIGIN}}"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' {{API_ORIGIN}}; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <script src="{{BASE}}backend.js" defer></script>
 <title>Reset password · Open RotMG</title>
 <link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="style.css">
 <script type="module" src="app.js"></script>

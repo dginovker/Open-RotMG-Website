@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>July 2010 Restoration · Open RotMG</title>
+  <meta name="description" content="A roadmap to restoring the July 2010 build100 game: historical requirements, current differences, research blockers and verification. Tutorial to realm, no Nexus.">
+  <link rel="canonical" href="{{SITE_URL}}restoration/2010/">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="{{BASE}}amulet-of-resurrection.png">
+  <link rel="stylesheet" href="{{BASE}}style.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body class="restoration-page">
+<div class="site-shell">
+  <main class="page-main">
+    <nav class="category-links" aria-label="Restoration year"><a href="../">2012 · 123.5.1</a><a href="./" aria-current="page">July 2010 · build100</a></nav>
+    <header class="restoration-intro">
+      <h1>July 2010 restoration</h1>
+      <p class="target-line">Build 100 · Tutorial → realm · No Nexus</p>
+      <h2 id="completion" role="status">Loading restoration roadmap…</h2>
+      <p>The goal is an accurate July 2010 game, not a similar playable reconstruction. Completion requires the historical behavior to be specified, implemented and verified end to end. Unresolved research and known differences block completion.</p>
+      <p id="roadmap-summary" class="roadmap-summary" role="status"></p>
+      <details class="scope-details"><summary>Research blocking the whole restoration</summary><div id="global-gates"></div><p>These blockers apply to every area. They cannot be cleared by passing implementation tests or choosing plausible defaults.</p></details>
+    </header>
+    <section aria-labelledby="roadmap-heading">
+      <h2 id="roadmap-heading">The game to restore</h2>
+      <p class="roadmap-help">Open an area to see the historical target, current differences, next research and acceptance requirements.</p>
+      <nav id="roadmap-nav" class="category-links" aria-label="Game areas"></nav>
+      <div id="roadmap"></div>
+      <p class="stage-key">Needs research → Ready to implement → Needs verification → Restored<br>Source code being present does not mean a feature is restored.</p>
+    </section>
+    <details id="technical" class="scope-details">
+      <summary>Technical catalogue and evidence</summary>
+      <p id="inventory-summary" class="audit-summary"></p>
+      <p class="audit-summary"><strong>Source implementation:</strong> <span id="implementation-summary">Loading…</span><br><strong>Historical acceptance:</strong> <span id="historical-summary">Loading…</span><br><strong>Executed acceptance:</strong> <span id="functional-summary">Loading…</span><br><strong>Unresolved questions:</strong> <span id="questions-summary">Loading…</span></p>
+      <p class="audit-summary">These are technical check counts, not a fidelity percentage. A template pass or one Wizard journey cannot pass other members, classes or unresolved historical requirements.</p>
+      <details class="scope-details"><summary>Original artifact, play copy and source snapshot</summary>
+        <p>The supplied client self-identifies as build100. Its production origin is not authenticated.</p>
+        <p><a href="https://www.openrotmg.org/2010/original-client.swf">Original client</a><br>SHA256 <code>ec031064b61d22e860de802ae1967ef1bb193b2c35d297ca1d25b1a96f76684e</code></p>
+        <p>The repaired play copy changes 23 numeric fields and one tooltip across eight items, not executable instructions. These are reconstruction differences awaiting historical resolution.<br>SHA256 <code>68b9220aeee798db883db7c336fd0f09e3b12a8f9856b65a013379b00cfe6bfd</code></p>
+        <p>Current-difference summaries and source dispositions refer to server revision <code>128bd1de03aaace23381b8705488494490e9061f</code>, not a fresh gameplay test or an attestation of the moving live server.</p>
+        <p>184 structural Enemy records include 170 Characters and 14 other objects, not 184 proven live monster types. Tutorial, environmental and dungeon subsets overlap. Five items without declared acquisition references remain availability questions, not exclusions.</p>
+      </details>
+      <form id="search-form" role="search">
+        <fieldset id="filters" disabled>
+          <legend>Find individual checks</legend>
+          <label>Search names, IDs or parameters <input id="search" type="search" autocomplete="off"></label>
+          <label>Domain <select id="domain"><option value="">All domains</option></select></label>
+          <label>Status <select id="status"><option value="">All statuses</option><optgroup label="Source implementation"><option value="present">Present in source</option><option value="partial">Partial in source</option><option value="missing">Missing in source</option><option value="not-inspected">Not inspected</option></optgroup><optgroup label="Historical acceptance"><option value="unresolved">Unresolved history</option><option value="differences">Known differences</option><option value="verified">Historically accepted</option></optgroup><optgroup label="Executed check"><option value="not-run">Not run</option><option value="passed">Passed</option><option value="failed">Failed</option></optgroup></select></label>
+          <label>Evidence variant <select id="variant"><option value="original">Original artifact</option><option value="repaired">Repaired play copy</option></select></label>
+          <button id="clear" type="button">Clear filters</button>
+        </fieldset>
+      </form>
+      <p id="visible-count" role="status" aria-live="polite"></p>
+      <nav id="areas" class="category-links" aria-label="Check domains"></nav>
+      <p class="audit-summary">Open a member, then a check for its original parameters, acceptance test, typed evidence and remaining questions. Existing check and member links remain available.</p>
+      <div id="checks"></div>
+    </details>
+    <p id="error" role="alert" hidden></p>
+    <noscript><p class="notice">JavaScript is required to inspect the restoration requirements and evidence. Restoration is incomplete; no acceptance status is available without validated data.</p></noscript>
+  </main>
+  <footer class="site-footer">
+    <p class="site-signature"><img src="{{BASE}}amulet-of-resurrection.png" width="17" height="17" alt="">Open RotMG</p>
+    <p>July 2010 restoration<br><a href="https://www.openrotmg.org/2010/">Play the incomplete preview</a></p>
+    <nav aria-label="Project">{{PROJECT_NAV}}</nav>
+  </footer>
+</div>
+<dialog id="check-dialog" aria-labelledby="check-title">
+  <div class="dialog-head"><h2 id="check-title"></h2><button id="check-close" type="button">Close</button></div>
+  <p id="check-status"></p>
+  <div id="check-content"></div>
+</dialog>
+</body>
+</html>

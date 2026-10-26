@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="openrotmg-api" content="{{API_ORIGIN}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' {{API_ORIGIN}} {{SOCKET_ORIGIN}}; worker-src 'self' blob:; media-src 'self' blob:; object-src 'none'; base-uri 'self'">
+  <script src="{{BASE}}backend.js" defer></script>
+  <title>Open RotMG | Pixel editor</title>
+  <meta name="description" content="Draw and share pixel art with the native 123.5.1 editor. Its public entry is reconstructed over the preserved client.">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="{{SITE_URL}}draw/">
+  <link rel="icon" href="{{BASE}}amulet-of-resurrection.png" type="image/png">
+  <link rel="stylesheet" href="{{BASE}}style.css">
+  <script src="{{BASE}}vendor/ruffle.js?v={{CLIENT_REVISION}}" defer></script>
+  <script src="{{BASE}}diagnostics.js" defer></script>
+  <script src="{{BASE}}game.js" defer></script>
+</head>
+<body class="game-page">
+<div class="site-shell">
+  <main class="page-main">
+    <h1 class="screen-reader">Pixel editor</h1>
+    <div id="game" data-mode="editor" aria-label="Native 123.5.1 pixel editor">
+      <div id="startup" role="status"><strong>Pixel editor</strong><span>Loading editor…</span><a href="https://ruffle.rs/">Powered by Ruffle</a></div>
+    </div>
+    <noscript><p class="notice">JavaScript is required to load the native Flash editor through Ruffle.</p></noscript>
+    <p id="load-error" class="notice" role="alert" hidden></p>
+  </main>
+  <footer class="site-footer">
+    <p class="site-signature">Open RotMG</p>
+    <nav aria-label="Project">{{PROJECT_NAV}}</nav>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="openrotmg-api" content="{{API_ORIGIN}}"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' {{API_ORIGIN}}; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <script src="{{BASE}}backend.js" defer></script>
+<title>Link account · Open RotMG</title>
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../recover/style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body><main>
+<h1 id="status" role="status">Linking…</h1>
+<p id="error" hidden></p>
+<section id="success" hidden>
+<p>Your Discord is now linked to <strong id="account-name"></strong>.</p>
+<p>You can now use these commands in Discord:</p>
+<ul>
+<li><code>/kick</code> - save and disconnect your game account if it gets stuck online.</li>
+<li><code>/recover</code> - get a private link to reset your game password.</li>
+<li><code>/unlink</code> - unlink your game account and disable Discord password recovery.</li>
+</ul>
+<p><strong>You can now close this tab.</strong></p>
+</section>
+<a id="signin" href="../" target="_blank" rel="noopener" hidden>Open game to sign in</a>
+</main></body></html>

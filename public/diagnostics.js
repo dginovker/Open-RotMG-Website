@@ -3,14 +3,23 @@ window.OpenRotMGDiagnostics = {
     const bytes = crypto.getRandomValues(new Uint8Array(16));
     const key = Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
     socketEndpoint.searchParams.set('diagnostics', key);
+    if (window.OpenRotMGBugReport) window.OpenRotMGBugReport.start(key, player);
     // Startup downloads must not compete with telemetry for the same connection.
     player.addEventListener('loadeddata', () => {
       let build = 'pending';
-      fetch(new URL('diagnostics-build.json', document.baseURI), {cache: 'no-store'})
+      fetch(new URL('/diagnostics-build.json', document.baseURI), {cache: 'no-store'})
         .then(response => {
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           return response.json();
-        }).then(value => { build = JSON.stringify(value); })
+        }).then(value => {
+          for (const [field, length] of [['website', 40], ['client', 40], ['runtime', 16]]) {
+            if (typeof value[field] !== 'string' || !new RegExp(`^[a-f0-9]{${length}}$`).test(value[field])) throw new Error(`Invalid diagnostic identity: ${field}`);
+          }
+          if (typeof value.dirty !== 'boolean' || (value.local_client !== undefined && value.local_client !== true)) throw new Error('Invalid diagnostic source qualification');
+          // The server bounds the identity string, not the complete release-selection manifest.
+          build = JSON.stringify({website: value.website, client: value.client, runtime: value.runtime, dirty: value.dirty,
+            ...(value.local_client === true ? {local_client: true} : {})});
+        })
         .catch(error => { build = 'unavailable'; console.error('Bug diagnostics build lookup failed', error); });
 
       // A separate probe cannot establish which renderer Ruffle actually uses.
@@ -63,7 +72,7 @@ window.OpenRotMGDiagnostics = {
         since = now; frames = 0; maxGap = 0; hiddenDuringInterval = document.hidden;
         if (longTasks !== null) { longTasks = 0; longTaskMs = 0; }
         try {
-          const response = await fetch(new URL(`/api/diagnostics/${key}`, document.baseURI), {
+          const response = await OpenRotMGBackend.fetch(`/api/diagnostics/${key}`, {
             method: 'POST', headers: {'content-type': 'application/json'}, body: JSON.stringify(sample),
             signal: AbortSignal.timeout(3000), redirect: 'error'
           });

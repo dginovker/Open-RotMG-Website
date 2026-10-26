@@ -1,45 +1,87 @@
 .restoration-intro { font-size: 12px; margin-bottom: 20px; }
 .restoration-intro h1 { margin-bottom: 6px; }
 .progress-line { color: #a1a197; margin: 0 0 13px; }
-.scope-note { font-size: 11px; color: #8b8b82; margin: 10px 0 16px; }
 .category-links { font-size: 11px; line-height: 2; margin: 0 0 19px; padding-bottom: 10px; border-bottom: 1px solid #30302b; }
 .category-links a { display: inline-block; margin-right: 13px; }
 .category { border: 1px solid #363636; padding: 0; margin: 16px 0; scroll-margin-top: 15px; }
 .category summary { background: linear-gradient(#2b2b2b, #1d1d1d); border-bottom: 1px solid #353535; padding: 6px 10px; font: 700 12px Verdana, sans-serif; color: #c8c6b9; cursor: pointer; }
 .section-count { font: 10px Verdana, sans-serif; color: #88887e; margin-left: 5px; }
 .forum-list { list-style: none; padding: 0; margin: 0; }
-.forum-list li { padding: 7px 10px; border-top: 1px solid #242424; display: flex; justify-content: space-between; gap: 14px; }
-.forum-list li:nth-child(even) { background: #141414; }
+.forum-list > li { padding: 7px 10px; border-top: 1px solid #242424; display: grid; grid-template-columns: minmax(0, 1fr) 130px; align-items: center; gap: 14px; }
+.forum-list > li:nth-child(even) { background: #141414; }
 .feature { border: 0; background: none; padding: 0; display: inline-flex; align-items: center; gap: 7px; text-align: left; font: 12px/1.65 Verdana, sans-serif; max-width: 100%; color: #cb8585; text-decoration: underline; text-underline-offset: 2px; }
 .feature:hover { color: #e3b1b1; }
 .feature > span { overflow-wrap: anywhere; }
 .feature small { font-size: 10px; margin-left: 5px; color: #99988d; }
 .sprite { width: 22px; height: 24px; object-fit: contain; image-rendering: pixelated; flex-shrink: 0; }
 .condition-icon { filter: drop-shadow(1px 0 0 #85877b) drop-shadow(-1px 0 0 #85877b); }
-.gate-count { font-size: 11px; color: #8f8f8f; white-space: nowrap; align-self: center; }
 dialog { width: 580px; max-width: calc(100vw - 28px); max-height: calc(100dvh - 28px); overflow: auto; background: #191916; color: #c8c7bc; border: 1px solid #77766b; padding: 17px; font: 12px/1.7 Verdana, sans-serif; box-shadow: 4px 4px 0 #0009; }
 dialog::backdrop { background: #000b; }
 .dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -17px -17px 16px; padding: 6px 12px; background: #292922; border-bottom: 1px solid #515148; }
 .feature-heading { display: flex; align-items: center; gap: 9px; min-width: 0; }
 .feature-heading img { width: 28px; height: 32px; object-fit: contain; image-rendering: pixelated; }
 .feature-heading h2 { font: bold 13px Verdana, sans-serif; margin: 0; color: #ddd9c8; }
-#feature-close { font: 11px Verdana, sans-serif; background: #38382f; border: 1px outset #636256; color: #d7d3c1; padding: 2px 6px; }
-.gate { display: flex; justify-content: space-between; gap: 15px; padding: 5px 0; border-bottom: 1px solid #36362e; }
-.gate .passed { color: #acba92; }
-#feature-gates { margin: 14px 0; }
-#feature-requirements { padding-left: 20px; }
-#feature-requirements li { margin: 6px 0; }
+#feature-close, #view { font: 11px Verdana, sans-serif; background: #38382f; border: 1px outset #636256; color: #d7d3c1; padding: 2px 6px; }
+.audit-summary { font-size: 11px; line-height: 1.9; }
+.work-note { margin: 3px 0 0; font: 11px/1.6 Verdana, sans-serif; color: #aaa99e; }
+.audit-state { font-size: 10px; text-align: right; color: #b8b8ad; align-self: start; padding-top: 3px; }
+.check-list { list-style: none; padding: 4px 0 0 14px; margin: 0; }
+.check-list li { display: grid; grid-template-columns: minmax(0, 1fr) 100px; gap: 8px; padding: 4px 0; border-top: 1px solid #242424; }
+.check { border: 0; background: none; padding: 0; color: #b8b8ad; text-align: left; font: 11px/1.6 Verdana, sans-serif; text-decoration: underline; cursor: pointer; }
+.check-state { font: 10px/1.6 Verdana, sans-serif; color: #99988d; text-align: right; }
+.check-missing { color: #cb8585; }
+.check-partial, .check-substituted { color: #d9b477; }
+.check-verified { color: #acba92; }
+.audit-state span { display: block; }
+.historical-verified, .implementation-present { color: #acba92; }
+.implementation-missing { color: #cb8585; }
+.historical-known-differences { color: #d9b477; }
+#feature-audit h3 { font-size: 12px; margin: 18px 0 5px; }
+#feature-audit p { margin: 6px 0; }
+#feature-audit ul, .category-questions ul { padding-left: 20px; }
+#feature-audit li, .category-questions li { margin: 8px 0; }
+#feature-audit, .category-questions { overflow-wrap: anywhere; }
+.citation { font-size: 11px; }
+.category-questions { padding: 7px 10px; font-size: 11px; }
+.category-questions h3 { font-size: 12px; }
+.category-questions .citation { margin: 3px 0; }
 #error { border: 1px solid #b27070; padding: 10px; color: #d9a0a0; }
-article { max-width: 800px; margin: 36px auto; padding: 0 20px; }
-article h2 { margin-top: 25px; }
-article a { overflow-wrap: anywhere; }
+.roadmap-2012 #roadmap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 16px 0 30px; }
+.roadmap-2012 .roadmap-area { border: 1px solid #363636; background: #171717; padding: 12px; font: 11px/1.7 Verdana, sans-serif; min-width: 0; }
+.roadmap-2012 .roadmap-area h3 { display: flex; align-items: center; gap: 9px; margin: 0 0 8px; font-size: 13px; color: #ddd9c8; }
+.roadmap-2012 .roadmap-area h3 .sprite { width: 28px; height: 30px; }
+.roadmap-2012 .roadmap-area h3 + p { color: #aaa99e; }
+.roadmap-2012 .roadmap-area section h3 { font-size: 11px; }
+.roadmap-2012 .roadmap-area ul { padding-left: 18px; }
+.roadmap-2012 .area-counts { color: #d9b477; }
+.roadmap-2012 .research-preview { margin: 10px 0; }
+.roadmap-2012 #filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; border: 1px solid #363636; padding: 12px; font-size: 11px; }
+.roadmap-2012 #filters label { display: grid; gap: 5px; }
+.roadmap-2012 #filters input, .roadmap-2012 #filters select, .roadmap-2012 #clear { font: 11px Verdana, sans-serif; background: #242420; color: #ddd9c8; border: 1px solid #626257; padding: 7px; max-width: 100%; }
+.roadmap-2012 #visible-count { font-size: 11px; }
+.roadmap-2012 .forum-list > li { grid-template-columns: minmax(0, 1fr) 175px; }
+.roadmap-2012 .component-group { margin: 9px 0 4px 14px; border: 1px solid #30302b; }
+.roadmap-2012 .component-group > summary { font: 11px/1.7 Verdana, sans-serif; padding: 5px 8px; background: #20201d; }
+.roadmap-2012 .component-group > .work-note { margin: 6px 8px; }
+.roadmap-2012 .check-list { padding: 0 8px; }
+.roadmap-2012 .check-list li { grid-template-columns: minmax(0, 1fr) 150px; }
+.roadmap-2012 #feature-status .audit-state { display: flex; gap: 12px; flex-wrap: wrap; text-align: left; }
+.roadmap-2012 .functional-passed { color: #acba92; }
+.roadmap-2012 .functional-failed { color: #cb8585; }
+.roadmap-2012 .roadmap-area, .roadmap-2012 .component-group, .roadmap-2012 .check-list { overflow-wrap: anywhere; }
 @media (max-width: 600px) {
+  .roadmap-2012 #roadmap { grid-template-columns: 1fr; }
+  .roadmap-2012 .forum-list > li, .roadmap-2012 .check-list li { grid-template-columns: 1fr; }
+  .roadmap-2012 .audit-state { text-align: left; display: flex; flex-wrap: wrap; gap: 3px 10px; }
+  .roadmap-2012 #filters label { width: 100%; }
+  .roadmap-2012 #filters input, .roadmap-2012 #filters select { width: 100%; }
   .category-links { font-size: 10px; }
-  .scope-note { font-size: 10px; }
   .feature { font-size: 11px; }
   .sprite { width: 19px; height: 22px; }
-  .forum-list li { gap: 8px; }
-  .gate-count { font-size: 10px; }
+  .forum-list > li { grid-template-columns: minmax(0, 1fr) 105px; gap: 8px; }
+  .check-list li { grid-template-columns: 1fr; gap: 2px; }
+  .check-state { text-align: left; }
+  .audit-state { font-size: 9px; }
   dialog { padding: 13px; }
   .dialog-head { margin: -13px -13px 13px; padding: 5px 9px; }
 }

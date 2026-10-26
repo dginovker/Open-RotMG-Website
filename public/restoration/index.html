@@ -13,37 +13,45 @@
   <link rel="stylesheet" href="style.css">
   <script type="module" src="app.js"></script>
 </head>
-<body class="restoration-page">
+<body class="restoration-page roadmap-2012">
 <div class="site-shell">
   <main class="page-main">
-    <a class="back" href="{{BASE}}">← Back to game</a>
+    <nav class="category-links" aria-label="Restoration year"><a href="./" aria-current="page">2012 · 123.5.1</a><a href="2010/">July 2010 · build100</a></nav>
     <div class="restoration-intro">
       <h1>Restoration</h1>
-      <p class="progress-line"><a id="overall" href="progress.json" aria-label="Catalogue score and source data">{{RESTORATION_PERCENT}}</a> complete · 123.5.1</p>
-      <p>Click a feature for its rules and recreation checks.</p>
-      <p class="scope-note">{{RESTORATION_STARTED}} of {{RESTORATION_FEATURES}} features have implementation work. The {{RESTORATION_PERCENT}} completion score counts verified original rules and recreations, not partial implementations.</p>
-      <p>16 October 2026: <a href="https://github.com/OpenRotMG/Open-RotMG-Server/pull/55">class-star records and native client fixes</a>, <a href="https://github.com/OpenRotMG/Open-RotMG-Server/pull/52">Midlands and Highlands groups</a>, <a href="https://github.com/OpenRotMG/Open-RotMG-Server/pull/59">named Realm bosses</a>, <a href="https://github.com/OpenRotMG/Open-RotMG-Server/pull/63">boss setpieces</a> and <a href="https://github.com/OpenRotMG/Open-RotMG-Server/pull/51">Nexus fountain healing</a> are now recorded. Class-star rules and persistence checks pass both gates. Other additions retain their historical-verification gaps. <a href="https://github.com/OpenRotMG/Open-RotMG-Website/blob/main/docs/historical-features.md">Historical feature ledger</a>.</p>
+      <p class="progress-line">The game to restore · 123.5.1</p>
+      <p>Explore each game area, then its requirements and acceptance checks. Source support, gameplay verification and historical confidence are independent. Known differences and unresolved research prevent full acceptance.</p>
+      <p id="overview-summary" role="status">Loading restoration requirements...</p>
+      <p id="work-summary" class="audit-summary"></p>
     </div>
-    <nav id="areas" class="category-links" aria-label="Feature categories"></nav>
-    <div id="features"></div>
+    <section aria-labelledby="roadmap-heading"><h2 id="roadmap-heading">Game areas</h2><div id="roadmap"></div></section>
+    <section id="requirements" aria-labelledby="requirements-heading">
+      <h2 id="requirements-heading">Find requirements and checks</h2>
+      <p class="audit-summary">Parents organize components without awarding duplicate progress. Open a check for its acceptance test, evidence, historical questions and stable link.</p>
+      <form id="search-form" role="search"><fieldset id="filters" disabled>
+        <legend>Filter restoration work</legend>
+        <label>Search <input id="search" type="search" autocomplete="off" placeholder="Barrels, World 2, cooldown..."></label>
+        <label>Work type <select id="view"></select></label>
+        <label>Game area <select id="category"><option value="">All areas</option></select></label>
+        <button id="clear" type="button">Clear filters</button>
+      </fieldset></form>
+      <p id="visible-count" role="status" aria-live="polite"></p>
+      <div id="features"></div>
+    </section>
     <p id="error" role="alert" hidden></p>
-    <noscript>JavaScript is required to inspect the Restoration catalogue.</noscript>
+    <noscript>JavaScript is required to inspect restoration requirements and evidence. No acceptance status is available without validated catalogue and evidence data.</noscript>
   </main>
   <footer class="site-footer">
     <p class="site-signature"><img src="{{BASE}}amulet-of-resurrection.png" width="17" height="17" alt="">Open RotMG</p>
     <p>2012 Realm of the Mad God reimplementation<br>
-    Report bugs and missing content on Discord.</p>
-    <nav aria-label="Project">
-      <div><a href="{{BASE}}">Game</a><a href="{{BASE}}about/">About</a><a href="{{BASE}}updates/">Updates</a><a href="{{BASE}}restoration/">{{RESTORATION_PERCENT}} complete</a></div>
-      <div><a href="{{BASE}}hiscores/">Hiscores</a><a href="{{BASE}}branding/">Branding</a><a href="https://github.com/OpenRotMG">Source</a><a href="https://discord.gg/EwZWNzzYwP">Discord</a></div>
-    </nav>
+    Report bugs and missing content with the link below.</p>
+    <nav aria-label="Project">{{PROJECT_NAV}}</nav>
   </footer>
 </div>
 <dialog id="feature-dialog" aria-labelledby="feature-title">
   <div class="dialog-head"><div class="feature-heading"><img id="feature-icon" alt="" hidden><h2 id="feature-title"></h2></div><button id="feature-close" type="button" aria-label="Close feature details">Close</button></div>
-  <p id="feature-criterion"></p>
-  <ul id="feature-requirements"></ul>
-  <div id="feature-gates"></div>
+  <p id="feature-status"></p>
+  <div id="feature-audit"></div>
 </dialog>
 </body>
 </html>

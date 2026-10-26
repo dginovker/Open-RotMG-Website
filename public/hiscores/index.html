@@ -1,21 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'self'">
-<title>Hiscores · Open RotMG</title><meta name="description" content="Open RotMG fame records and drop collections.">
+<meta charset="utf-8">
+  <meta name="openrotmg-api" content="{{API_ORIGIN}}"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{API_ORIGIN}}; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'self'">
+  <script src="{{BASE}}backend.js" defer></script>
+<title>Hiscores · Open RotMG</title><meta name="description" content="Open RotMG star ranks, fame records and drop collections.">
 <link rel="canonical" href="{{SITE_URL}}hiscores/"><link rel="icon" href="/amulet-of-resurrection.png">
 <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="style.css"><script type="module" src="app.js"></script>
 </head>
 <body><div class="site-shell"><main class="page-main">
-<a href="/">← Back to game</a><h1>Hiscores</h1>
-<nav aria-label="Hiscore categories"><a href="?board=base_fame">Base fame</a> · <a href="?board=collection">Collection</a> · <a href="?board=total_fame">Total fame</a></nav>
-<h2 id="title">Base fame</h2><p id="description"></p>
+<h1>Hiscores</h1>
+<nav aria-label="Hiscore categories"><a href="?board=collection">Collection</a> · <a href="?board=total_fame">Total fame</a> · <a href="?board=base_fame">Living fame</a> · <a href="?board=stars">Stars</a> · <a href="?board=quests">Quests completed</a></nav>
+<h2 id="title">Collection</h2><p id="description"></p>
 <label for="search">Search</label> <input id="search" type="search" maxlength="80">
 <p id="status" role="status">Loading…</p>
-<div class="scores"><table id="scores"><thead><tr><th>Rank</th><th>Player</th><th id="metric">Base fame</th></tr></thead><tbody></tbody></table></div>
-<section id="collection" hidden><p id="collected"></p><div id="items"></div></section>
+<div class="scores"><table id="scores"><thead><tr><th>Rank</th><th>Player</th><th id="metric">Collection</th></tr></thead><tbody></tbody></table></div>
+<section id="collection" hidden><p id="collected"></p>
+<p><label for="sort">Sort by</label> <select id="sort">
+<option value="name">Name A–Z</option><option value="missing">Not obtained first</option><option value="recent">Recently obtained</option>
+</select></p><div id="items"></div></section>
 </main><footer class="site-footer">
 <p class="site-signature"><img src="{{BASE}}amulet-of-resurrection.png" width="17" height="17" alt="">Open RotMG</p>
-<p>2012 Realm of the Mad God reimplementation<br>Report bugs and missing content on Discord.</p>
-<nav aria-label="Project"><div><a href="{{BASE}}">Game</a><a href="{{BASE}}about/">About</a><a href="{{BASE}}updates/">Updates</a><a href="{{BASE}}restoration/">{{RESTORATION_PERCENT}} complete</a></div><div><a href="{{BASE}}hiscores/">Hiscores</a><a href="{{BASE}}branding/">Branding</a><a href="https://github.com/OpenRotMG">Source</a><a href="https://discord.gg/EwZWNzzYwP">Discord</a></div></nav></footer></div></body></html>
+<p>2012 Realm of the Mad God reimplementation<br>Report bugs and missing content with the link below.</p>
+<nav aria-label="Project">{{PROJECT_NAV}}</nav></footer></div></body></html>

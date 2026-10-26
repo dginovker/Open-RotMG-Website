@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self'; worker-src 'self' blob:; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'">
+  <title>2010 Preview | Open RotMG</title>
+  <meta name="description" content="An incomplete July 2010 server reconstruction using the original client with selected DATA repairs.">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://www.openrotmg.org/2010/">
+  <link rel="icon" href="{{BASE}}amulet-of-resurrection.png" type="image/png">
+  <link rel="stylesheet" href="{{BASE}}style.css">
+  <script src="vendor/ruffle.js" defer></script>
+  <script src="preview.js" defer></script>
+</head>
+<body class="game-page">
+<div class="site-shell">
+  <main class="page-main">
+    <h1 class="screen-reader">Open RotMG 2010 Preview</h1>
+    <p class="alpha-warning" role="note">The 2010 preview is incomplete. Characters are separate from the 2012 game.</p>
+    <div id="game" aria-label="Realm of the Mad God, July 2010">
+      <div id="startup" role="status">
+        <img src="{{BASE}}amulet-of-resurrection.png" width="96" height="96" alt="">
+        <strong>Open RotMG</strong>
+        <span>Loading client…</span>
+        <a href="https://ruffle.rs/">Powered by Ruffle</a>
+      </div>
+    </div>
+    <noscript><p class="notice">JavaScript is required to load the preserved Flash client through Ruffle.</p></noscript>
+    <p id="load-error" class="notice" role="alert" hidden></p>
+  </main>
+  <footer class="site-footer">
+    <p class="site-signature"><img src="{{BASE}}amulet-of-resurrection.png" width="17" height="17" alt="">Open RotMG</p>
+    <p>July 2010 Realm of the Mad God client with minimal server<br>
+    <a href="original-client.swf" download>Original client</a> · <a href="https://github.com/dginovker/Open-RotMG-Server/tree/b70d95ff30fae59864f6271417ad997c918ff0f4">2010 source</a> · <a href="https://openrotmg.org/restoration/2010/">Restoration checklist</a></p>
+    <nav aria-label="Project">{{PROJECT_NAV}}</nav>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      server_revision:
+        type: string
+        required: false
+      client_revision:
+        type: string
+        required: false
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.page_url }}
+    env:
+      SITE_URL: https://openrotmg.org/
+      API_ORIGIN: https://game.openrotmg.org
+      CLIENT_DIR: ${{ github.workspace }}/client
+      SERVER_DIR: ${{ github.workspace }}/server
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: website
+          persist-credentials: false
+      - name: Select the deployed game and client
+        id: backend
+        working-directory: website
+        env:
+          EXPECTED_SERVER_REVISION: ${{ inputs.server_revision }}
+          EXPECTED_CLIENT_REVISION: ${{ inputs.client_revision }}
+        run: python3 -B tools/pages.py inspect
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: OpenRotMG/Open-RotMG-Client
+          ref: ${{ steps.backend.outputs.client }}
+          path: client
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: OpenRotMG/Open-RotMG-Server
+          ref: ${{ steps.backend.outputs.server }}
+          path: server
+          sparse-checkout: data/sfx
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 22.23.3
+          package-manager-cache: false
+      - name: Test and build the website
+        working-directory: website
+        run: |
+          python3 -B -m unittest discover -s ../client/tests -v
+          npm test
+          python3 -B -W error::ResourceWarning -m unittest discover -s tools -p 'test_*.py'
+          python3 -B tools/package.py dist ../client "$GITHUB_SHA" "$RUNNER_TEMP/deploy.bundle"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: deployment
+          path: ${{ runner.temp }}/deploy.bundle
+          retention-days: 1
+      - name: Assemble independent static game assets
+        working-directory: website
+        run: python3 -B tools/pages.py assemble
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          path: website/dist
+          retention-days: 1
+      - name: Reject stale website publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          current=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)
+          test "$current" = "$GITHUB_SHA" || { echo 'Website main advanced; refusing stale Pages publication' >&2; exit 1; }
+      - name: Publish
+        id: publish
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346

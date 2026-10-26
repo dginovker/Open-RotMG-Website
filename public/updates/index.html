@@ -1,20 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://cdn.discordapp.com https://media.discordapp.net; media-src https://cdn.discordapp.com https://media.discordapp.net; object-src 'none'; base-uri 'self'">
+<meta charset="utf-8">
+  <meta name="openrotmg-api" content="{{API_ORIGIN}}"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{API_ORIGIN}}; script-src 'self'; style-src 'self'; img-src 'self' https://cdn.discordapp.com https://media.discordapp.net; media-src https://cdn.discordapp.com https://media.discordapp.net; object-src 'none'; base-uri 'self'">
+  <script src="{{BASE}}backend.js" defer></script>
 <meta name="theme-color" content="#000000">
 <title>Updates · Open RotMG</title><meta name="description" content="The latest Open RotMG development updates, synced from our Discord update blog.">
 <link rel="canonical" href="{{SITE_URL}}updates/"><link rel="icon" href="/amulet-of-resurrection.png">
 <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="style.css"><script type="module" src="app.js"></script>
 </head>
 <body><div class="site-shell"><main class="page-main">
-<a class="back" href="/">← Back to game</a><h1>Updates</h1>
+<h1>Updates</h1>
 <p>Development posts from <strong>#update-blog</strong>. Read posts and watch attachments here without a Discord account.</p>
 <p id="status" role="status">Loading updates…</p>
 <noscript><p>JavaScript is required to load the updates feed.</p></noscript>
 <div id="updates"></div>
 </main><footer class="site-footer">
 <p class="site-signature"><img src="{{BASE}}amulet-of-resurrection.png" width="17" height="17" alt="">Open RotMG</p>
-<p>2012 Realm of the Mad God reimplementation<br>Report bugs and missing content on Discord.</p>
-<nav aria-label="Project"><div><a href="{{BASE}}">Game</a><a href="{{BASE}}about/">About</a><a href="{{BASE}}updates/">Updates</a><a href="{{BASE}}restoration/">{{RESTORATION_PERCENT}} complete</a></div><div><a href="{{BASE}}hiscores/">Hiscores</a><a href="{{BASE}}branding/">Branding</a><a href="https://github.com/OpenRotMG">Source</a><a href="https://discord.gg/EwZWNzzYwP">Discord</a></div></nav></footer></div></body></html>
+<p>2012 Realm of the Mad God reimplementation<br>Report bugs and missing content with the link below.</p>
+<nav aria-label="Project">{{PROJECT_NAV}}</nav></footer></div></body></html>

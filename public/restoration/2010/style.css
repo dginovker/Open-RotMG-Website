@@ -1,0 +1,62 @@
+.restoration-intro p { line-height: 1.8; }
+.target-line { color: #a1a197; }
+#completion { font-size: 16px; color: #d9b477; }
+.roadmap-summary, .roadmap-help, .stage-key { font-size: 11px; line-height: 1.9; }
+.roadmap-summary { color: #d9b477; }
+.roadmap-area { border: 1px solid #3b3b32; margin: 12px 0; scroll-margin-top: 16px; }
+.roadmap-area > summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 12px; padding: 14px; background: #191916; cursor: pointer; }
+.area-title { font-weight: bold; color: #dbd9ca; }
+.area-title::before { content: '▸ '; color: #9c9c90; }
+.roadmap-area[open] .area-title::before { content: '▾ '; }
+.area-description { grid-column: 1 / -1; font-size: 11px; }
+.stage { color: #d9b477; font-size: 10px; font-weight: normal; }
+.roadmap-area > section, .requirement { margin: 14px; }
+.roadmap-area h3, .requirement h3 { font-size: 12px; margin: 0 0 5px; }
+.roadmap-area p, .roadmap-area li { font-size: 12px; line-height: 1.85; }
+.requirement { border-top: 1px solid #36362e; padding-top: 10px; }
+.requirement > summary { cursor: pointer; font-size: 12px; }
+.requirement > summary .stage { margin-left: 10px; }
+.requirement > section, .requirement-evidence { margin: 14px 0 14px 12px; }
+.requirement-evidence { font-size: 11px; }
+.requirement-evidence > summary { cursor: pointer; color: #cb8585; }
+.requirement-evidence p { margin-bottom: 10px; }
+#technical { margin: 26px 0; }
+#technical > summary { padding-bottom: 12px; font-weight: bold; }
+.stage-key { color: #a1a197; }
+.scope-details { border-top: 1px solid #35352e; padding: 10px 0; }
+.scope-details summary, .member summary { cursor: pointer; }
+code, #check-content { overflow-wrap: anywhere; white-space: normal; }
+fieldset { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; border: 1px solid #55554b; padding: 12px; font: 11px/1.8 Verdana, sans-serif; }
+label { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+label:first-of-type { flex: 1 1 230px; }
+input, select, #clear, #check-close { background: #232320; color: #ddd9c8; border: 1px solid #77766b; padding: 7px; font: 12px Verdana, sans-serif; max-width: 100%; }
+input { width: 100%; box-sizing: border-box; }
+:focus-visible { outline: 2px solid #e8b980; outline-offset: 3px; }
+#visible-count { font: 11px/1.8 Verdana, sans-serif; }
+.category { padding: 10px; }
+.category h2 { font-size: 14px; margin: 5px 0 10px; }
+.category h3 { font-size: 11px; }
+.category > section { font: 11px/1.7 Verdana, sans-serif; }
+.member { margin: 0; border-top: 1px solid #35352e; }
+.member summary { padding: 10px; font: 12px/1.8 Verdana, sans-serif; overflow-wrap: anywhere; }
+.member:nth-child(even) { background: #161614; }
+.check-list { list-style: none; margin: 0; padding: 0 10px 10px 24px; }
+.check-list li { display: flex; justify-content: space-between; align-items: start; gap: 16px; padding: 8px 0; border-top: 1px solid #292923; font: 11px/1.8 Verdana, sans-serif; }
+.audit-state { max-width: 44%; min-width: 125px; font-size: 9px; }
+#check-title { font: bold 13px/1.7 Verdana, sans-serif; margin: 0; }
+#check-content h3 { font-size: 12px; margin: 18px 0 6px; }
+#check-content p { white-space: pre-wrap; }
+#check-content ul { padding-left: 20px; }
+#check-content li { margin: 6px 0; }
+@media (max-width: 600px) {
+  .roadmap-area > summary { grid-template-columns: minmax(0, 1fr); padding: 12px; }
+  .roadmap-area > summary .stage { grid-row: 2; }
+  .roadmap-area > section, .requirement { margin: 12px; }
+  .requirement > summary .stage { display: block; margin: 3px 0 0 14px; }
+  fieldset { gap: 10px; }
+  fieldset label { flex: 1 1 100%; }
+  input, select, #clear, #check-close { min-height: 40px; }
+  .check-list li { flex-direction: column; gap: 2px; }
+  .audit-state { text-align: left; max-width: 100%; }
+  .member summary { padding: 12px 5px; }
+}

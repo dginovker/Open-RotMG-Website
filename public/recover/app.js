@@ -2,9 +2,9 @@ export function passwordValid(password) {
   const bytes = new TextEncoder().encode(password).length;
   return bytes >= 5 && bytes <= 128 && !/\p{Cc}/u.test(password);
 }
-export async function submitReset(token, password, fetchImpl = fetch) {
+export async function submitReset(token, password, fetchImpl = globalThis.OpenRotMGBackend.fetch) {
   if (!/^[a-f0-9]{64}$/.test(token) || !passwordValid(password)) throw new Error('Invalid reset link or password');
-  const response = await fetchImpl('/api/account/recover', {method: 'POST', headers: {'content-type': 'application/json'}, body: JSON.stringify({token, password}), credentials: 'omit', mode: 'same-origin', cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(25000)});
+  const response = await fetchImpl('/api/account/recover', {method: 'POST', headers: {'content-type': 'application/json'}, body: JSON.stringify({token, password}), credentials: 'omit', mode: 'cors', cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(25000)});
   const result = await response.json();
   if (!response.ok) throw new Error(typeof result.error === 'string' ? result.error : `Reset rejected (${response.status})`);
   if (result.reset !== true) throw new Error('Invalid reset confirmation');
@@ -14,7 +14,7 @@ function start() {
   const valid = /^[a-f0-9]{64}$/.test(token) && !location.search;
   history.replaceState(null, '', location.pathname);
   const status = document.querySelector('#status'), form = document.querySelector('#reset');
-  if (!valid) {status.textContent = 'Open the private reset link from /recover in Discord. Recovery must first be enabled using /discord recovery in game.';return;}
+  if (!valid) {status.textContent = 'Open the private reset link from /recover in Discord. Use /link in Discord to enable recovery.';return;}
   status.textContent = 'This private link expires after 15 minutes and can only be used once.';
   form.hidden = false;
   form.addEventListener('submit', async event => {

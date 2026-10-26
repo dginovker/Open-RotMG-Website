@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="openrotmg-api" content="{{API_ORIGIN}}"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{API_ORIGIN}}; frame-src {{API_ORIGIN}}; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'self'">
+  <script src="{{BASE}}backend.js" defer></script>
+<title>Bot CCTV · Open RotMG</title><meta name="description" content="Watch Open RotMG gameplay bots live: what they see, where they aim and move, and why.">
+<link rel="canonical" href="{{SITE_URL}}bots/"><link rel="icon" href="/amulet-of-resurrection.png">
+<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="style.css"><script type="module" src="app.js"></script>
+</head>
+<body><div class="site-shell"><main class="page-main">
+<h1>Bot CCTV</h1>
+<p>Pick a live bot to watch what it sees, where it aims and moves, and why.</p>
+<p><label for="bot">Bot</label> <select id="bot"></select></p>
+<p id="status" role="status">Loading bots…</p>
+<div class="cctv">
+<div><div id="view"></div><p id="view-status" role="status">Native view: disconnected.</p></div>
+<div><p id="telemetry-status" role="status">Telemetry: disconnected. No decision received.</p><p id="vitals"></p><h2>Thoughts and chat</h2><ol id="thoughts" reversed></ol></div>
+</div>
+<h2>Language model</h2><p id="llm"></p>
+</main><footer class="site-footer">
+<p class="site-signature"><img src="{{BASE}}amulet-of-resurrection.png" width="17" height="17" alt="">Open RotMG</p>
+<p>2012 Realm of the Mad God reimplementation<br>Report bugs and missing content with the link below.</p>
+<nav aria-label="Project">{{PROJECT_NAV}}</nav></footer></div></body></html>
